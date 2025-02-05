@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import './App.css';
+import { useState,useEffect } from "react";
+import "./App.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,10 +12,17 @@ function App() {
       <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center py-5">
           <div className="text-3xl font-extrabold text-blue-600">Edudigno</div>
-          <button className="md:hidden block text-gray-700" onClick={() => setMenuOpen(!menuOpen)}>
-            ☰
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden block text-gray-700 text-2xl"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? "✖" : "☰"} {/* Toggle between hamburger and close icon */}
           </button>
-          <ul className={`md:flex space-x-8 hidden font-medium text-lg`}>
+
+          {/* Desktop Menu */}
+          <ul className="md:flex space-x-8 hidden font-medium text-lg">
             <li><a href="#" className="hover:text-blue-600">Jobs</a></li>
             <li><a href="#" className="hover:text-blue-600">Companies</a></li>
             <li><a href="#" className="hover:text-blue-600">Services</a></li>
@@ -22,29 +31,108 @@ function App() {
             <li><a href="#" className="hover:text-blue-600">Register</a></li>
           </ul>
         </div>
+
+        {/* Mobile Menu */}
+        <ul
+          className={`md:hidden bg-white shadow-lg fixed top-16 left-0 w-full py-5 space-y-4 text-center font-medium text-lg transition-transform duration-300 ${
+            menuOpen ? "translate-y-0" : "-translate-y-[150%]"
+          }`}
+        >
+          <li><a href="#" className="block py-2 hover:text-blue-600">Jobs</a></li>
+          <li><a href="#" className="block py-2 hover:text-blue-600">Companies</a></li>
+          <li><a href="#" className="block py-2 hover:text-blue-600">Services</a></li>
+          <li><a href="#" className="block py-2 hover:text-blue-600">Post a Job</a></li>
+          <li><a href="#" className="block bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600">Login</a></li>
+          <li><a href="#" className="block py-2 hover:text-blue-600">Register</a></li>
+        </ul>
       </nav>
+      
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-500 to-indigo-600 py-36 mt-20 text-center text-white">
         <div className="max-w-5xl mx-auto px-6">
-          <h1 className="text-4xl font-extrabold leading-tight">“Connecting talent with<span className="text-yellow-300"> opportunity”</span></h1>
+          <h1 className="text-4xl font-extrabold leading-tight">
+            “Connecting talent with <span className="text-yellow-300">opportunity”</span>
+          </h1>
           <p className="text-xl mt-5">Your next career move is just a few clicks away.</p>
-          <div className="flex justify-center mt-8 space-x-4 bg-white p-4 rounded-lg shadow-lg">
-            <input type="text" placeholder="Skills, Companies" className="px-5 py-3 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400" />
-            <input type="text" placeholder="Location" className="px-5 py-3 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400" />
+
+          {/* Search Inputs */}
+          <div className="flex flex-wrap justify-center mt-8 space-x-4 bg-white p-4 rounded-lg shadow-lg">
+            <input
+              type="text"
+              placeholder="Skills, Companies"
+              className="px-5 py-3 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400"
+            />
+            <input
+              type="text"
+              placeholder="Location"
+              className="px-5 py-3 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400"
+            />
             <select className="px-5 py-3 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400">
               <option>Experience Level</option>
               <option>Fresher</option>
               <option>1-3 Years</option>
               <option>3+ Years</option>
             </select>
-            <button className="bg-yellow-400 text-white px-8 py-3 rounded-lg text-lg hover:bg-yellow-500">Search</button>
+            <button className="bg-yellow-400 text-white px-8 py-3 rounded-lg text-lg hover:bg-yellow-500">
+              Search
+            </button>
           </div>
         </div>
+        {/* Add an illustration or image */}
+  <img src="https://example.com/illustration.png" alt="Job Search" className="absolute bottom-0 right-0 w-1/3 opacity-50 md:opacity-100" />
       </section>
+
+      <section className="py-16 bg-white">
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Why Choose Edudigno?</h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+        <h3 className="text-xl font-bold mb-4">Wide Range of Jobs</h3>
+        <p className="text-gray-600">Access thousands of job opportunities across various industries.</p>
+      </div>
+      <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+        <h3 className="text-xl font-bold mb-4">Easy Application Process</h3>
+        <p className="text-gray-600">Apply to jobs with just a few clicks and track your applications.</p>
+      </div>
+      <div className="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+        <h3 className="text-xl font-bold mb-4">Career Resources</h3>
+        <p className="text-gray-600">Get access to resume builders, interview tips, and more.</p>
+      </div>
+    </div>
+  </div>
+</section> 
 
 
       {/* Add these sections below the Hero Section */}
+
+ {/* Blog/Resources Section */}
+<section className="py-16 bg-gray-50">
+  <div className="max-w-6xl mx-auto px-6">
+    <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Career Resources & Blogs</h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <img src="/blog-image-1.jpg" alt="Resume Tips" className="w-full h-40 object-cover rounded-md" />
+        <h3 className="text-xl font-bold mt-4">How to Write a Winning Resume</h3>
+        <p className="text-gray-600 mt-2">Learn the key elements of crafting a resume that gets you hired.</p>
+        <a href="#" className="text-blue-500 font-semibold mt-3 inline-block">Read More →</a>
+      </div>
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <img src="/blog-image-2.jpg" alt="Interview Tips" className="w-full h-40 object-cover rounded-md" />
+        <h3 className="text-xl font-bold mt-4">Ace Your Next Interview</h3>
+        <p className="text-gray-600 mt-2">Master the most commonly asked interview questions.</p>
+        <a href="#" className="text-blue-500 font-semibold mt-3 inline-block">Read More →</a>
+      </div>
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <img src="/blog-image-3.jpg" alt="Tech Trends" className="w-full h-40 object-cover rounded-md" />
+        <h3 className="text-xl font-bold mt-4">Top Tech Skills in Demand for 2024</h3>
+        <p className="text-gray-600 mt-2">Stay ahead in your career with these trending tech skills.</p>
+        <a href="#" className="text-blue-500 font-semibold mt-3 inline-block">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+     
 
       {/* Job Categories Section */}
       <section className="py-12 bg-gray-100">
@@ -152,41 +240,61 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-
-      <footer className="bg-gray-900 text-white py-14">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10">
-          <div>
-            <h3 className="text-xl font-bold mb-5">Company</h3>
-            <ul className="space-y-3 text-lg">
-              <li><a href="#" className="hover:text-yellow-400">About Us</a></li>
-              <li><a href="#" className="hover:text-yellow-400">Careers</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold mb-5">Support</h3>
-            <ul className="space-y-3 text-lg">
-              <li><a href="#" className="hover:text-yellow-400">Help Center</a></li>
-              <li><a href="#" className="hover:text-yellow-400">Contact Us</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold mb-5">Resources</h3>
-            <ul className="space-y-3 text-lg">
-              <li><a href="#" className="hover:text-yellow-400">Blog</a></li>
-              <li><a href="#" className="hover:text-yellow-400">Community</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold mb-5">Legal</h3>
-            <ul className="space-y-3 text-lg">
-              <li><a href="#" className="hover:text-yellow-400">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-yellow-400">Terms of Service</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+     {/* Footer */}
+<section className="py-16 bg-white">
+  <div className="max-w-3xl mx-auto px-6 text-center">
+    <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
+    <p className="text-xl mb-6">Subscribe to our newsletter for the latest job opportunities and career tips.</p>
+    <div className="flex justify-center">
+      <input type="email" placeholder="Enter your email" className="px-5 py-3 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400" />
+      <button className="bg-blue-500 text-white px-8 py-3 rounded-lg text-lg hover:bg-blue-600 ml-4">Subscribe</button>
     </div>
+  </div>
+</section>
+
+<footer className="bg-gray-900 text-white py-14">
+  <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-10">
+    <div>
+      <h3 className="text-xl font-bold mb-5">Company</h3>
+      <ul className="space-y-3 text-lg">
+        <li><a href="#" className="hover:text-yellow-400">About Us</a></li>
+        <li><a href="#" className="hover:text-yellow-400">Careers</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 className="text-xl font-bold mb-5">Support</h3>
+      <ul className="space-y-3 text-lg">
+        <li><a href="#" className="hover:text-yellow-400">Help Center</a></li>
+        <li><a href="#" className="hover:text-yellow-400">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 className="text-xl font-bold mb-5">Resources</h3>
+      <ul className="space-y-3 text-lg">
+        <li><a href="#" className="hover:text-yellow-400">Blog</a></li>
+        <li><a href="#" className="hover:text-yellow-400">Community</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 className="text-xl font-bold mb-5">Legal</h3>
+      <ul className="space-y-3 text-lg">
+        <li><a href="#" className="hover:text-yellow-400">Privacy Policy</a></li>
+        <li><a href="#" className="hover:text-yellow-400">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 className="text-xl font-bold mb-5">Follow Us</h3>
+      <div className="flex space-x-4">
+        <a href="#" className="hover:text-yellow-400"><i className="fab fa-facebook-f"></i> Facebook</a>
+        <a href="#" className="hover:text-yellow-400"><i className="fab fa-twitter"></i> Twitter</a>
+        <a href="#" className="hover:text-yellow-400"><i className="fab fa-linkedin-in"></i> LinkedIn</a>
+        
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
+
   
   );
 }
