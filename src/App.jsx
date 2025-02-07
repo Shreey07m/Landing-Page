@@ -49,7 +49,7 @@ function App() {
       
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-500 to-indigo-600 py-36 mt-20 text-center text-white">
+      <section className="bg-gradient-to-r from-purple-400 to-indigo-500 py-36 mt-20 text-center text-white">
         <div className="max-w-5xl mx-auto px-6">
           <h1 className="text-4xl font-extrabold leading-tight">
             “Connecting talent with <span className="text-yellow-300">opportunity”</span>
@@ -57,27 +57,32 @@ function App() {
           <p className="text-xl mt-5">Your next career move is just a few clicks away.</p>
 
           {/* Search Inputs */}
-          <div className="flex flex-wrap justify-center mt-8 space-x-4 bg-white p-4 rounded-lg shadow-lg">
+          
+          <div className="max-w-3xl mx-auto flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 bg-white/80 p-4 rounded-lg">
             <input
               type="text"
               placeholder="Skills, Companies"
-              className="px-5 py-3 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400"
+              className="px-6 py-4 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400 w-full md:w-auto flex-grow" // Added flex-grow
             />
+
             <input
               type="text"
               placeholder="Location"
-              className="px-5 py-3 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400"
+              className="px-6 py-4 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400 w-full md:w-auto flex-grow" // Added flex-grow
             />
-            <select className="px-5 py-3 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400">
-              <option>Experience Level</option>
+            <select
+              className="px-6 py-4 border rounded-lg text-lg text-gray-800 focus:ring-2 focus:ring-blue-400 w-full md:w-auto flex-grow" // Added flex-grow
+            >
+              <option>Experience Level</option> 
               <option>Fresher</option>
               <option>1-3 Years</option>
               <option>3+ Years</option>
             </select>
-            <button className="bg-yellow-400 text-white px-8 py-3 rounded-lg text-lg hover:bg-yellow-500">
-              Search
+            <button className="bg-yellow-400 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-yellow-500 transition duration-300 w-full"> {/* w-full for mobile responsiveness */}
+                Search
             </button>
           </div>
+         
         </div>
         {/* Add an illustration or image */}
   <img src="https://example.com/illustration.png" alt="Job Search" className="absolute bottom-0 right-0 w-1/3 opacity-50 md:opacity-100" />
@@ -206,6 +211,32 @@ function App() {
               <p className="text-gray-600">Salary: ₹8-12 LPA</p>
               <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 mt-4">Apply Now</button>
             </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+              <h3 className="text-lg font-medium text-gray-800">ML Engineer</h3>
+              <p className="text-gray-600">Microsoft - Mumbai</p>
+              <p className="text-gray-600">Experience: 0-5 years</p>
+              <p className="text-gray-600">Salary: ₹6-12 LPA</p>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 mt-4">Apply Now</button>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+              <h3 className="text-lg font-medium text-gray-800"> Site Reliability Engineer</h3>
+              <p className="text-gray-600">Amazon - Bangalore</p>
+              <p className="text-gray-600">Experience: 0-2years</p>
+              <p className="text-gray-600">Salary: ₹8-10 LPA</p>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 mt-4">Apply Now</button>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+              <h3 className="text-lg font-medium text-gray-800"> Software Engineer</h3>
+              <p className="text-gray-600">Google - Bangalore</p>
+              <p className="text-gray-600">Experience: 0-2years</p>
+              <p className="text-gray-600">Salary: ₹8-10 LPA</p>
+              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 mt-4">Apply Now</button>
+            </div>
+
+
             {/* Repeat the above div for other trending jobs */}
           </div>
           <div className="text-center mt-6">
@@ -224,6 +255,14 @@ function App() {
               <p className="text-gray-600">"I landed my dream job through Edudigno! The platform was easy to use, and the resources were incredibly helpful." - John Doe</p>
               <p className="text-gray-800 font-medium mt-4">- Software Engineer at Google</p>
             </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow-md">
+              <p className="text-gray-600">"Rising from challenges to achievements, our employees turn aspirations into success stories."-Sarah Williams</p>
+              <p className="text-gray-800 font-medium mt-4">- Project Manager at Accenture</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow-md">
+              <p className="text-gray-600">"From perseverance to excellence, our employees transform dreams into remarkable achievements."-ohn Smith</p>
+              <p className="text-gray-800 font-medium mt-4">- Data Science Engineer at Microsoft</p>
+            </div>
             {/* Repeat the above div for other testimonials */}
           </div>
         </div>
@@ -232,7 +271,7 @@ function App() {
       {/* Call to Action Section (e.g., "Register Now" or "Find Your Dream Job") */}
     
 
-      <section className="py-16 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center">
+      <section className="py-16 bg-gradient-to-r from-blue-400 to-indigo-500 text-white text-center">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Career Journey?</h2>
           <p className="text-xl mb-6">Create your profile and discover exciting job opportunities.</p>
